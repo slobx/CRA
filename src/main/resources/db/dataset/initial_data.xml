@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+        logicalFilePath="db/dataset/initial_data.xml">
+    <changeSet id="initial_tables" author="slobodan.vrhovac">
+        <createSequence sequenceName="S_CAR" startValue="1" incrementBy="1"/>
+        <createTable tableName="CAR">
+            <column name="ID" type="NUMBER(19,0)">
+                <constraints primaryKey="true" primaryKeyName="PK_CAR"/>
+            </column>
+            <column name="VERSION" type="NUMBER(19,0)"/>
+            <column name="CAR_MAKE" type="VARCHAR2(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CAR_MODEL" type="VARCHAR2(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_AVAILABLE" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CAR_UUID" type="VARCHAR2(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="S_RESERVATION" startValue="1" incrementBy="1"/>
+        <createTable tableName="RESERVATION">
+            <column name="ID" type="NUMBER(19,0)">
+                <constraints primaryKey="true" primaryKeyName="PK_RESERVATION"/>
+            </column>
+            <column name="VERSION" type="NUMBER(19,0)"/>
+            <column name="START_OF_RESERVATION" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="END_OF_RESERVATION" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="S_USERS" startValue="1" incrementBy="1"/>
+        <createTable tableName="USERS">
+            <column name="ID" type="NUMBER(19,0)">
+                <constraints primaryKey="true" primaryKeyName="PK_CAR_USER"/>
+            </column>
+            <column name="VERSION" type="NUMBER(19,0)"/>
+            <column name="USER_NAME" type="VARCHAR2(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="PHONE_NUMBER" type="VARCHAR2(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="RESERVATION_USERS">
+            <column name="RESERVATION_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USER_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="RESERVATION_CAR">
+            <column name="RESERVATION_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CAR_ID" type="NUMBER(19, 0)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="RESERVATION_ID" baseTableName="RESERVATION_USERS"
+                                 constraintName="FK_RESERVATION_USERS" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID" referencedTableName="RESERVATION" validate="true"/>
+
+        <addForeignKeyConstraint baseColumnNames="RESERVATION_ID" baseTableName="RESERVATION_CAR"
+                                 constraintName="FK_RESERVATION_CAR" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="ID" referencedTableName="RESERVATION" validate="true"/>
+    </changeSet>
+    <changeSet id="initial_data" author="slobodan.vrhovac">
+        <insert tableName="CAR">
+            <column name="ID" valueSequenceNext="S_CAR"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="CAR_MAKE" value="SKODA"/>
+            <column name="CAR_MODEL" value="KAROQ"/>
+            <column name="CAR_MODEL" value="KAROQ"/>
+            <column name="CAR_UUID" value="C0180016365260166712677524822584329376868"/>
+        </insert>
+        <insert tableName="CAR">
+            <column name="ID" valueSequenceNext="S_CAR"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="CAR_MAKE" value="HYUNDAI"/>
+            <column name="CAR_MODEL" value="TUCSON"/>
+            <column name="CAR_UUID" value="C0213956696098197852265129904887602033466"/>
+        </insert>
+        <insert tableName="CAR">
+            <column name="ID" valueSequenceNext="S_CAR"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="CAR_MAKE" value="KIA"/>
+            <column name="CAR_MODEL" value="SPORTAGE"/>
+            <column name="CAR_UUID" value="C0173173304649683500627328322580736997081"/>
+        </insert>
+        <insert tableName="CAR">
+            <column name="ID" valueSequenceNext="S_CAR"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="CAR_MAKE" value="HONDA"/>
+            <column name="CAR_MODEL" value="CR-V"/>
+            <column name="CAR_UUID" value="C0154505657542799602340033590811344926962"/>
+        </insert>
+        <insert tableName="CAR">
+            <column name="ID" valueSequenceNext="S_CAR"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="CAR_MAKE" value="MAZDA"/>
+            <column name="CAR_MODEL" value="CX-5"/>
+            <column name="CAR_UUID" value="C0340017445566958246850085264929091846543"/>
+        </insert>
+
+        <insert tableName="USERS">
+            <column name="ID" valueSequenceNext="S_USERS"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="USER_NAME" value="slobx"/>
+            <column name="PHONE_NUMBER" value="+38163111222"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

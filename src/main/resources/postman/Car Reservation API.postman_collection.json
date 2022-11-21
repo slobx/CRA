@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "546b96da-5c0a-4d85-9ba0-15626a05a0fc",
+		"name": "Car Reservation API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all cars",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8098/api/car",
+					"host": [
+						"localhost"
+					],
+					"port": "8098",
+					"path": [
+						"api",
+						"car"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get car by Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8098/api/car/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8098",
+					"path": [
+						"api",
+						"car",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new car",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"make\": \"test\",\n  \"model\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8098/api/car",
+					"host": [
+						"localhost"
+					],
+					"port": "8098",
+					"path": [
+						"api",
+						"car"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update car",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"make\": \"test6\",\n    \"model\": \"tes4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8098/api/car",
+					"host": [
+						"localhost"
+					],
+					"port": "8098",
+					"path": [
+						"api",
+						"car"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete car",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8098/api/car/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8098",
+					"path": [
+						"api",
+						"car",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"carId\": \"2\",\n  \"userName\": \"slobx\",\n  \"startOfReservation\": \"2022-11-19T15:00:00\",\n  \"endOfReservation\": \"2022-11-19T17:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8098/api/reservation",
+					"host": [
+						"localhost"
+					],
+					"port": "8098",
+					"path": [
+						"api",
+						"reservation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get reservation by user name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8098/api/reservation/slobx",
+					"host": [
+						"localhost"
+					],
+					"port": "8098",
+					"path": [
+						"api",
+						"reservation",
+						"slobx"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,31 @@
+server.port: 8098
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+    com.slobx.cra: DEBUG
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;Mode=Oracle
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  liquibase:
+    change-log: classpath:/db/changelog/changelog.xml
+    user: sa
+    password: password
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;Mode=Oracle
+    enabled: true
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
